@@ -70,6 +70,12 @@
             <artifactId>itextpdf</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-xtra -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-xtra</artifactId>
+            <version>5.5.12</version>
+        </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>

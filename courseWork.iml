@@ -109,7 +109,9 @@
     <orderEntry type="library" name="Maven: javax.measure:jsr-275:0.9.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: pl.edu.icm.cermine:cermine-impl:1.14" level="project" />
-    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.11" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.12" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itext-xtra:5.5.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-imaging:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:kernel:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:io:7.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
