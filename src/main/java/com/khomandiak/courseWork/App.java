@@ -1,6 +1,5 @@
 package com.khomandiak.courseWork;
 
-
 import java.io.*;
 
 
@@ -8,7 +7,6 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.*;
 
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 
 
 import javax.swing.*;
@@ -47,9 +45,7 @@ public class App {
             SimpleGUI gui = new SimpleGUI();
             gui.setLabel(new JTextArea(references));
             gui.setVisible(true);
-        } catch (InvalidPasswordException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        }  catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
