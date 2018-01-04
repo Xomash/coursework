@@ -1,0 +1,13 @@
+{
+  "server": {
+    "host": "Value",
+    "password": "pass",
+    "loginOn": "log",
+    "configs": [
+      {
+        "path": "\/src\/blabla",
+        "time": "0152"
+      }
+    ]
+  }
+}
