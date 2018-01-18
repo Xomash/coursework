@@ -90,10 +90,10 @@ public class Main {
     Git git = getGit();
     FileOutputStream fos = new FileOutputStream("src/config/test.txt");
     fos.write("Hi".getBytes());
-    git.checkout().setName(Constants.DEFAULT_REMOTE_NAME + "/volia_config").call();
     git.add().addFilepattern("src/config/test.txt").call();
-    git.commit().setMessage("Ok").call();
-    git.push().call();
+    RevCommit commit = git.commit().setMessage("Ok").call();
+    git.checkout().setName(Constants.DEFAULT_REMOTE_NAME + "/volia_config").call();
+    //git.push().call();
 }
 
         private static void printCheckSum(byte[] mdbytes) {
