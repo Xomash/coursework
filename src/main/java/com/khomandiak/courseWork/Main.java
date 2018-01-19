@@ -52,6 +52,8 @@ public class Main {
     private static int port = 22;
 
     private static String remoteFile = "/u01/volia/payara/glassfish/domains/domain1/config/volia-core-log4j.xml";
+    private static String pathname = "/";//"C:/Users/o.khomandiak/IdeaProjects/volia-billing";
+    private static String ref = "volia_config";
 
     public static void main(String[] args) throws Exception {
         /*
@@ -90,11 +92,11 @@ public class Main {
         }
     */
     Git git = getGit();
-    FileOutputStream fos = new FileOutputStream("src/config/test.txt");
+    FileOutputStream fos = new FileOutputStream("src/config/test.txt");//"/static/configs/test.txt");
     fos.write("Hi".getBytes());
     git.add().addFilepattern("src/config/test.txt").call();
-    RevCommit commit = git.commit().setMessage("Ok №2").setAuthor("admin", "admin@volia.com").call();
-    RefSpec spec = new RefSpec("volia_config:volia_config");
+    RevCommit commit = git.commit().setMessage("Ok №4").setAuthor("admin", "admin@volia.com").call();
+        RefSpec spec = new RefSpec(ref + ":" + ref);
     git.push().setCredentialsProvider(new UsernamePasswordCredentialsProvider("xoma02@gmail.com", "eminem315314")).setRemote("origin").setRefSpecs(spec).call();
 }
 
@@ -162,9 +164,9 @@ public class Main {
     }
 
     private static Git getGit() throws IOException, GitAPIException {
-        File gitWorkDir = new File("/");
+        File gitWorkDir = new File(pathname);
         Git git = Git.open(gitWorkDir);
-        git.checkout().setName(Constants.R_HEADS + "volia_config").call();
+        git.checkout().setName(Constants.R_REMOTES+Constants.DEFAULT_REMOTE_NAME + "/"+ref).call();
         return git;
     }
 
