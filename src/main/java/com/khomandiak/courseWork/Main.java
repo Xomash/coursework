@@ -33,6 +33,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevSort;
 import org.eclipse.jgit.revwalk.RevTree;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.transport.RefSpec;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.eclipse.jgit.treewalk.TreeWalk;
 import org.eclipse.jgit.treewalk.filter.AndTreeFilter;
 import org.eclipse.jgit.treewalk.filter.PathFilter;
@@ -92,8 +94,8 @@ public class Main {
     fos.write("Hi".getBytes());
     git.add().addFilepattern("src/config/test.txt").call();
     RevCommit commit = git.commit().setMessage("Ok").call();
-    git.checkout().setName(Constants.DEFAULT_REMOTE_NAME + "/volia_config").call();
-    //git.push().call();
+    RefSpec spec = new RefSpec("refs/heads/volia_config" + ":" + "refs/remotes/origin/volia_config");
+    git.push().setCredentialsProvider(new UsernamePasswordCredentialsProvider("xoma02@gmail.com", "eminem315314")).setRemote("origin").setRefSpecs(spec).call();
 }
 
         private static void printCheckSum(byte[] mdbytes) {
