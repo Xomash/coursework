@@ -33,6 +33,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevSort;
 import org.eclipse.jgit.revwalk.RevTree;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.transport.RefSpec;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.eclipse.jgit.treewalk.TreeWalk;
 import org.eclipse.jgit.treewalk.filter.AndTreeFilter;
 import org.eclipse.jgit.treewalk.filter.PathFilter;
@@ -91,9 +93,9 @@ public class Main {
     FileOutputStream fos = new FileOutputStream("src/config/test.txt");
     fos.write("Hi".getBytes());
     git.add().addFilepattern("src/config/test.txt").call();
-    RevCommit commit = git.commit().setMessage("Ok").call();
-    git.checkout().setName(Constants.DEFAULT_REMOTE_NAME + "/volia_config").call();
-    //git.push().call();
+    RevCommit commit = git.commit().setMessage("Ok").setAuthor("o.khomandiak", "oleh.khomandiak@volia.com").call();
+    RefSpec spec = new RefSpec("volia_config:volia_config");
+    git.push().setCredentialsProvider(new UsernamePasswordCredentialsProvider("xoma02@gmail.com", "eminem315314")).setRemote("origin").setRefSpecs(spec).call();
 }
 
         private static void printCheckSum(byte[] mdbytes) {
@@ -162,7 +164,7 @@ public class Main {
     private static Git getGit() throws IOException, GitAPIException {
         File gitWorkDir = new File("/");
         Git git = Git.open(gitWorkDir);
-        git.checkout().setName(Constants.DEFAULT_REMOTE_NAME + "/volia_config").call();
+        git.checkout().setName("refs/heads" + "/volia_config").call();
         return git;
     }
 
