@@ -31,8 +31,8 @@ public class App {
         int n = data.length - 1;
         System.out.println("Дано: ");
         printData(data);
-        System.out.println("Етап 1:");
         for(int i = 0; i < n-1; i++) {
+            System.out.printf("Етап %d:\n", i+1);
             computeA(n);
             computeB(n);
             computeFine(n);
@@ -85,7 +85,6 @@ public class App {
             }
             findMaxFine(n);
         }
-        System.out.println(fineMax);
     }
 
     private static void computeFine(int n) {
@@ -96,8 +95,6 @@ public class App {
             int[] col = getCol(n, i);
             fineB.add(getMin(n, col, true));
         }
-        System.out.println(fineA);
-        System.out.println(fineB);
     }
 
     private static void computeB(int n) {
