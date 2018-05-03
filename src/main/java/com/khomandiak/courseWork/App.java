@@ -147,7 +147,7 @@ public class App {
         return min == MAX_VALUE ? -1 : min;
     }
 
-    private static void printData(int[][] data) {
+    static void printData(int[][] data) {
         StringBuilder sb = new StringBuilder();
         sb.append(" |————————————————————————|\n");
         for (int[] row : data) {
