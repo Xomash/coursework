@@ -38,8 +38,16 @@ public class MainTest
 
     public void testGenetic(){
         for(int i = 0; i< 1000; i++){
+            System.out.print(i+1 + ") ");
             Genetic.main(null);
             assertEquals(219, Genetic.answer);
+        }
+    }
+
+    public void testReduction(){
+        for(int i = 0; i< 1000; i++){
+            System.out.print(i+1 + ") ");
+            App.main(null);
         }
     }
 }

@@ -21,8 +21,8 @@ public class Genetic {
             { 6, 35 , 17 , 93 , 133, 2  , -1 , 200},
             { 7, 95 , 236, 119, 3  , 49 , 300, -1}};
     private static final int BOUND = 3;
-    private static final int SELECTION_SIZE = 3;
-    private static final double CHILD_PERCENT = 0.4;
+    private static final int SELECTION_SIZE = 7;
+    private static final double CHILD_PERCENT = 0.6;
     static int answer = 0;
 
     public static void main(String[] args) {
@@ -35,22 +35,25 @@ public class Genetic {
         selection.sort(Genetic::compare);
         //System.out.println(selection);
         //selection.forEach(o -> System.out.print(getSum(o) + ", "));
-        System.out.println("------------------------------------------------------------------------------");
-        for (int i = 0; i < 30; i++) {
+        //System.out.println("------------------------------------------------------------------------------");
+        for (int i = 0; i < 22; i++) {
             int n = selection.size();
             crossing(selection, n);
-            //n = selection.size();
+            n = selection.size();
             selection = selection.stream().distinct().collect(Collectors.toList());
-            //int percentOfSurvivors = ((n) * 2) / 3;
-            //selection = selection.subList(0, selection.size() < percentOfSurvivors ? selection.size() : percentOfSurvivors);
+            if(i > 6) {
+                int percentOfSurvivors = ((n) * 2) / 3;
+                selection = selection.subList(0, selection.size() < percentOfSurvivors ? selection.size() : percentOfSurvivors);
+            }
             //System.out.println(selection);
             //selection.forEach(o -> System.out.print(getSum(o) + ", "));
             //System.out.println("------------------------------------------------------------------------------");
         }
         System.out.println(selection);
-        selection.forEach(o -> System.out.print(getSum(o) + ", "));
-        System.out.println("------------------------------------------------------------------------------");
+        //selection.forEach(o -> System.out.print(getSum(o) + ", "));
+        //System.out.println("------------------------------------------------------------------------------");
         answer = getSum(selection.get(0));
+        System.out.println(answer);
     }
 
     private static void crossing(List<List<Integer>> selection, int n) {
@@ -135,8 +138,8 @@ public class Genetic {
     private static List<List<Integer>> getSelection() {
         List<List<Integer>> selection = new ArrayList<>();
         int n = data.length - 1;
+        Random r = new Random();
         for (int i = 0; i < SELECTION_SIZE; i++) {
-            Random r = new Random();
             List<Integer> oneWay = new ArrayList<>();
             oneWay.add(1);
             for (int j = 1; j < n; j++) {

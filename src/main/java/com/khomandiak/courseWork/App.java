@@ -11,35 +11,43 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.min;
 
 public class App {
-    private static int[][] data = new int[][]{
-            {-2, 1, 2, 3, 4, 5, -3},
-            {1, -1, 7, 60, 220, 55, 0},
-            {2, 22, -1, 40, 80, 100, 0},
-            {3, 140, 150, -1, 14, 70, 0},
-            {4, 440, 120, 70, -1, 7, 0},
-            {5, 21, 17, 28, 90, -1, 0},
-            {-4, 0, 0, 0, 0, 0, -1}};
+    private static int[][] data;
 
-    private static int iMax = 0;
-    private static int jMax = 0;
+    private static int iMax;
+    private static int jMax;
 
-    private static List<Integer> fineA = new ArrayList<Integer>();
-    private static List<Integer> fineB = new ArrayList<Integer>();
-    private static Map<Integer, Integer> path = new TreeMap<Integer, Integer>();
+    private static List<Integer> fineA;
+    private static List<Integer> fineB;
+    private static Map<Integer, Integer> path ;
 
     public static void main(String[] args) {
+        data = new int[][]{
+                {-2,  1 , 2  , 3  , 4  , 5  , 6  , 7   , -3},
+                { 1, -1 , 7  , 60 , 220, 55 , 117, 190 ,  0},
+                { 2, 22 , -1 , 40 , 80 , 100, 217, 5   ,  0},
+                { 3, 140, 150, -1 , 14 , 70 , 134, 200 ,  0},
+                { 4, 440, 120, 70 , -1 , 7  , 150, 217 ,  0},
+                { 5, 21 , 17 , 28 , 90 , -1 , 111, 79  ,  0},
+                { 6, 35 , 17 , 93 , 133, 2  , -1 , 200 ,  0},
+                { 7, 95 , 236, 119, 3  , 49 , 300, -1  ,  0},
+                {-4,  0 ,   0,   0,  0 ,  0 ,  0 ,  0 ,  -1}};
+        fineA = new ArrayList<>();
+        fineB = new ArrayList<>();
+        path = new TreeMap<>();
+        iMax = 0;
+        jMax = 0;
         int n = data.length - 1;
-        System.out.println("Дано: ");
+        //System.out.println("Дано: ");
         printData(data);
         for(int i = 0; i < n-1; i++) {
-            System.out.printf("Етап %d:\n", i+1);
+            //System.out.printf("Етап %d:\n", i+1);
             computeA(n);
             computeB(n);
             computeFine(n);
             findMaxFine(n);
             path.put(iMax, jMax);
             deleteObsolete(n);
-            printData(data);
+            //printData(data);
             System.out.println(path);
         }
     }
@@ -57,7 +65,7 @@ public class App {
             for (int j = 1; j < n; j++) {
                 if (data[i][j] == 0) {
                     int fine = fineA.get(i - 1) + fineB.get(j - 1);
-                    System.out.printf("(%d, %d) = %d\n", i, j, fine);
+                    //System.out.printf("(%d, %d) = %d\n", i, j, fine);
                     if(fine > fineMax && (!isCycle(i, j) || path.size() == n-2)) {
                         iMax = i;
                         jMax = j;
@@ -109,7 +117,7 @@ public class App {
                 data[j][i] = data[j][i] > 0 ? (data[j][i] - b) : data[j][i];
             }
         }
-        printData(data);
+        //printData(data);
     }
 
     private static int[] getCol(int n, int i) {
@@ -131,7 +139,7 @@ public class App {
                 data[i][j] = data[i][j] > 0 ? (data[i][j] - a) : data[i][j];
             }
         }
-        printData(data);
+        //printData(data);
     }
 
     private static int getMin(int n, int[] datum, boolean fine) {
